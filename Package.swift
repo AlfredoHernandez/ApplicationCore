@@ -5,6 +5,11 @@ import PackageDescription
 
 let package = Package(
     name: "ApplicationCore",
+    defaultLocalization: "en",
+    platforms: [
+        .iOS(.v13),
+        .macOS(.v10_15)
+    ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -23,6 +28,10 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "ApplicationCoreTests",
-            dependencies: ["ApplicationCore"]),
+            dependencies: ["ApplicationCore"],
+            resources: [
+                .process("Resources")
+            ]
+        ),
     ]
 )
